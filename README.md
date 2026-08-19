@@ -1,17 +1,405 @@
-🔎 Reconnaissance & Enumeration Lab — Metasploitable2
+🔎 Reconnaissance & Enumeration Lab
 
 "Kali Linux" (https://img.shields.io/badge/Platform-Kali%20Linux-557C94?logo=kalilinux&logoColor=white)
 "Nmap" (https://img.shields.io/badge/Tool-Nmap-4682B4)
 "Metasploit" (https://img.shields.io/badge/Tool-Metasploit-2596CD)
-"Target" (https://img.shields.io/badge/Target-Metasploitable2-red)
-"Status" (https://img.shields.io/badge/Environment-Authorized%20Lab-green)
+"Cybersecurity" (https://img.shields.io/badge/Domain-Cybersecurity-red)
+"Environment" (https://img.shields.io/badge/Environment-Authorized%20Lab-green)
+
+«Network Reconnaissance, Service Enumeration & SMTP/SNMP Security Testing»
+
+---
 
 📌 Project Overview
 
-This project documents a reconnaissance and enumeration exercise performed against Metasploitable2, an intentionally vulnerable Linux virtual machine designed for cybersecurity training and penetration-testing practice.
+This project documents a network reconnaissance and enumeration exercise performed in an authorized cybersecurity laboratory environment.
 
-The assessment was conducted from a Kali Linux attacker machine in an isolated VMware lab environment.
+The assessment focused on identifying exposed network services and performing further enumeration using Nmap and the Metasploit Framework.
 
+The lab included:
+
+- Network port reconnaissance
+- Service identification
+- SMTP enumeration
+- SMTP auxiliary-module testing using Metasploit
+- SNMP auxiliary-module testing using Metasploit
+- Documentation of discovered attack-surface information
+
+Author: Y. Harika
+Environment: Authorized Cybersecurity Lab
+Primary Tools: Nmap, Metasploit Framework
+
+---
+
+🎯 Objectives
+
+The objectives of this lab were to:
+
+- Identify accessible network ports.
+- Perform network reconnaissance using Nmap.
+- Identify exposed services and protocols.
+- Perform SMTP enumeration.
+- Explore SMTP-related Metasploit auxiliary modules.
+- Configure and execute SMTP enumeration against the authorized lab target.
+- Explore SNMP-related Metasploit auxiliary modules.
+- Configure and execute SNMP enumeration.
+- Document the reconnaissance and enumeration process.
+
+---
+
+🛠️ Tools & Technologies
+
+Kali Linux
+
+Used as the security-testing environment for conducting reconnaissance and enumeration activities.
+
+Nmap
+
+Used for network scanning and SMTP reconnaissance.
+
+Metasploit Framework
+
+Used to search for and execute auxiliary modules related to SMTP and SNMP enumeration.
+
+---
+
+🔍 1. Network Reconnaissance
+
+The initial reconnaissance phase was used to identify accessible ports and services on the lab target.
+
+Open Ports Identified
+
+The report documents the following open ports:
+
+Port| Protocol
+21| TCP
+22| TCP
+23| TCP
+53| TCP/UDP
+80| TCP
+389| TCP
+445| TCP
+1433| TCP
+161| UDP
+162| UDP
+3306| TCP
+3389| TCP
+443| TCP
+
+These ports represent the exposed network attack surface identified during the reconnaissance phase.
+
+Services / Protocols Represented
+
+The identified ports correspond to services or protocols including:
+
+- FTP — "21/TCP"
+- SSH — "22/TCP"
+- Telnet — "23/TCP"
+- DNS — "53/TCP/UDP"
+- HTTP — "80/TCP"
+- LDAP — "389/TCP"
+- SMB — "445/TCP"
+- Microsoft SQL Server — "1433/TCP"
+- SNMP — "161/UDP"
+- SNMP Trap — "162/UDP"
+- MySQL — "3306/TCP"
+- RDP — "3389/TCP"
+- HTTPS — "443/TCP"
+
+«Note: The report documents the open-port list. Service versions and detailed service validation should only be considered where explicitly shown in the supporting evidence.»
+
+---
+
+📧 2. SMTP Enumeration
+
+SMTP reconnaissance was performed as part of the enumeration phase.
+
+The report contains a dedicated Nmap scan for SMTP, followed by investigation of SMTP-related Metasploit auxiliary modules.
+
+Nmap SMTP Scan
+
+Nmap was used to perform reconnaissance against the SMTP service.
+
+The SMTP section of the report includes evidence of the Nmap SMTP scanning activity.
+
+Purpose
+
+The SMTP enumeration phase was intended to examine the exposed mail service and determine information that could be obtained through SMTP reconnaissance.
+
+---
+
+🔐 3. SMTP Enumeration Using Metasploit
+
+The Metasploit Framework was used to identify SMTP-related auxiliary modules.
+
+The report contains evidence showing:
+
+- SMTP auxiliary-module listings
+- Searching for SMTP auxiliary modules
+- Setting the target using "RHOSTS"
+- Execution of the SMTP enumeration module
+
+Metasploit Workflow
+
+The SMTP testing workflow consisted of:
+
+1. Open Metasploit Framework
+2. Search for SMTP auxiliary modules
+3. Select the appropriate SMTP enumeration module
+4. Configure RHOSTS
+5. Execute the module
+6. Review the enumeration results
+
+RHOSTS Configuration
+
+The target was configured through the Metasploit "RHOSTS" option as demonstrated in the report.
+
+Result
+
+The execution output and supporting evidence are included in the accompanying lab report.
+
+---
+
+📡 4. SNMP Enumeration
+
+SNMP reconnaissance was performed using the Metasploit Framework.
+
+The report documents:
+
+- Searching for SNMP auxiliary modules
+- Listing available SNMP auxiliary options
+- Configuring "RHOSTS"
+- Executing the SNMP module
+
+Metasploit SNMP Workflow
+
+1. Search for SNMP auxiliary modules
+2. Review available SNMP modules
+3. Select the required SNMP auxiliary module
+4. Configure RHOSTS
+5. Review module options
+6. Execute the module
+7. Analyze the result
+
+SNMP Port
+
+The reconnaissance phase identified:
+
+161/UDP
+162/UDP
+
+as part of the documented open-port list.
+
+---
+
+📊 5. Attack Surface Summary
+
+The reconnaissance phase identified multiple exposed services across different protocols.
+
+Category| Port(s)| Protocol
+FTP| 21| TCP
+SSH| 22| TCP
+Telnet| 23| TCP
+DNS| 53| TCP/UDP
+HTTP| 80| TCP
+LDAP| 389| TCP
+SMB| 445| TCP
+Microsoft SQL Server| 1433| TCP
+SNMP| 161| UDP
+SNMP Trap| 162| UDP
+MySQL| 3306| TCP
+RDP| 3389| TCP
+HTTPS| 443| TCP
+
+This demonstrates the importance of performing systematic reconnaissance before deeper security testing.
+
+---
+
+🧠 6. Security Observations
+
+The reconnaissance activity demonstrates several important security-testing concepts:
+
+1. Large Attack Surface
+
+Multiple network services were accessible on the target, increasing the number of services that would require security review.
+
+2. Service Enumeration
+
+Identifying exposed ports provides the foundation for determining which services should be investigated further.
+
+3. SMTP Enumeration
+
+The SMTP service was specifically investigated using both Nmap and Metasploit.
+
+4. SNMP Enumeration
+
+SNMP was investigated using Metasploit auxiliary modules after identifying SNMP-related ports during reconnaissance.
+
+5. Importance of Controlled Testing
+
+All reconnaissance and enumeration activities should be performed only against systems for which explicit authorization has been provided.
+
+---
+
+🛡️ 7. Security Recommendations
+
+Based on the exposed services documented during reconnaissance, organizations should consider the following defensive controls.
+
+Network Services
+
+- Disable unnecessary network services.
+- Restrict exposed services using firewall rules.
+- Apply network segmentation.
+- Regularly review externally and internally exposed ports.
+- Keep network services patched and supported.
+
+FTP
+
+- Disable FTP when it is not required.
+- Prefer secure file-transfer protocols.
+- Restrict access to authorized systems.
+
+Telnet
+
+- Disable Telnet where possible.
+- Use secure remote-administration protocols such as SSH.
+
+SMB
+
+- Restrict SMB access to trusted networks.
+- Disable unnecessary legacy SMB protocols.
+- Apply appropriate authentication and access controls.
+
+Database Services
+
+For exposed database services such as SQL Server and MySQL:
+
+- Restrict database ports to authorized hosts.
+- Use strong authentication.
+- Apply security patches.
+- Avoid unnecessary network exposure.
+
+SNMP
+
+- Restrict SNMP access to authorized management systems.
+- Avoid default or weak community strings.
+- Prefer SNMPv3 where supported.
+- Monitor unexpected SNMP activity.
+
+Web Services
+
+For HTTP/HTTPS services:
+
+- Keep web servers patched.
+- Enforce HTTPS where appropriate.
+- Remove unnecessary services and applications.
+- Monitor suspicious web traffic.
+
+---
+
+🧰 8. Skills Demonstrated
+
+This project demonstrates practical experience with:
+
+- Network reconnaissance
+- Port scanning
+- Service enumeration
+- Nmap
+- Nmap-based SMTP reconnaissance
+- Metasploit Framework
+- Metasploit auxiliary modules
+- SMTP enumeration
+- SNMP enumeration
+- "RHOSTS" configuration
+- Attack-surface analysis
+- Security documentation
+- Basic penetration-testing methodology
+
+---
+
+🎓 9. Learning Outcomes
+
+Through this lab, I gained practical experience in:
+
+1. Performing network reconnaissance using Nmap.
+2. Identifying accessible network ports.
+3. Understanding the attack surface created by exposed services.
+4. Performing SMTP reconnaissance.
+5. Searching for SMTP auxiliary modules in Metasploit.
+6. Configuring "RHOSTS" for authorized security testing.
+7. Executing SMTP enumeration modules.
+8. Searching for SNMP auxiliary modules.
+9. Performing SNMP enumeration using Metasploit.
+10. Documenting reconnaissance activities and results.
+
+---
+
+📄 10. Detailed Lab Report
+
+The complete lab evidence, screenshots, commands, and execution details are available in the accompanying Word document.
+
+Report: ""harika report.docx"" (harika%20report.docx)
+
+The Word report contains the supporting evidence for:
+
+- Open-port reconnaissance
+- Nmap SMTP scanning
+- SMTP Metasploit auxiliary-module activity
+- SMTP execution
+- SNMP auxiliary-module activity
+- SNMP configuration and execution
+
+The report identifies Y. HARIKA as the author.
+
+---
+
+📁 11. Repository Structure
+
+Reconnaissance-and-Enumeration-Lab/
+│
+├── README.md
+│
+└── harika report.docx
+
+No separate screenshot folder is required because the supporting evidence is already included in the Word report.
+
+---
+
+⚠️ 12. Disclaimer
+
+This project is intended strictly for cybersecurity education and authorized security testing.
+
+The reconnaissance and enumeration techniques documented here should only be performed against:
+
+- Systems owned by the tester
+- Intentionally vulnerable training environments
+- Isolated cybersecurity labs
+- Systems where explicit testing authorization has been provided
+
+Do not scan, enumerate, or test systems without proper authorization.
+
+---
+
+👩‍💻 Author
+
+Y. Harika
+
+Cybersecurity | SOC | VAPT | Network Security
+
+Areas of Interest
+
+- Security Operations Center (SOC)
+- Vulnerability Assessment & Penetration Testing (VAPT)
+- SIEM & Security Monitoring
+- Network Security
+- Web Application Security
+- Incident Detection & Response
+- Threat Detection
+- MITRE ATT&CK
+
+---
+
+⭐ If you found this project useful, consider starring the repository.
 The objective was to identify exposed network services, determine service versions, enumerate SMTP-supported functionality and usernames, and assess SNMP exposure.
 
 «Author: Y. Harika
